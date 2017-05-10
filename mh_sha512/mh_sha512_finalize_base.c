@@ -60,7 +60,7 @@ void MH_SHA512_TAIL_FUNCTION(uint8_t * partial_buffer, uint64_t total_len,
 	       MH_SHA512_BLOCK_SIZE - partial_buffer_len);
 
 	// Calculate the first block without total_length if padding needs 2 block
-	if (partial_buffer_len > (MH_SHA512_BLOCK_SIZE - 8)) {
+	if (partial_buffer_len > (MH_SHA512_BLOCK_SIZE - SHA512_PADLENGTHFIELD_SIZE)) {
 		MH_SHA512_BLOCK_FUNCTION(partial_buffer, mh_sha512_segs_digests, frame_buffer,
 					 1);
 		//Padding the second block
@@ -68,7 +68,7 @@ void MH_SHA512_TAIL_FUNCTION(uint8_t * partial_buffer, uint64_t total_len,
 	}
 	//Padding the block
 	len_in_bit = bswap((uint64_t) total_len * 8);
-	*(uint64_t *) (partial_buffer + MH_SHA512_BLOCK_SIZE - 8) = len_in_bit;
+	*(uint64_t *) (partial_buffer + MH_SHA512_BLOCK_SIZE - SHA512_PADLENGTHFIELD_SIZE) = len_in_bit;
 	MH_SHA512_BLOCK_FUNCTION(partial_buffer, mh_sha512_segs_digests, frame_buffer, 1);
 
 	//Calculate multi-hash SHA512 digests (segment digests as input message)
