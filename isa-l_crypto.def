@@ -62,3 +62,8 @@ mh_sha256_update                       @58
 mh_sha256_finalize                     @59
 mh_sha256_finalize_base                @60
 mh_sha256_update_base                  @61
+mh_sha512_init                         @62
+mh_sha512_update                       @63
+mh_sha512_finalize                     @64
+mh_sha512_finalize_base                @65
+mh_sha512_update_base                  @66

@@ -30,6 +30,7 @@ include sha512_mb/Makefile.am
 include mh_sha1/Makefile.am
 include mh_sha1_murmur3_x64_128/Makefile.am
 include mh_sha256/Makefile.am
+include mh_sha512/Makefile.am
 include aes/Makefile.am
 
 # LIB version info not necessarily the same as package version
